@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 CUSTOM_APPS = [
     "users.apps.UsersConfig",
     "tweets.apps.TweetsConfig",
+    "rooms.apps.RoomsConfig",
+    "common.apps.CommonConfig",
 ]
 
 SYSTEM_APPS = [
