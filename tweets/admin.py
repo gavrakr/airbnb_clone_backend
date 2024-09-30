@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tweet, Link
+from .models import Tweet, Like
 
 
 @admin.register(Tweet)
@@ -7,13 +7,14 @@ class TweetAdmin(admin.ModelAdmin):
     list_display = (
         "payload",
         "user",
+        "total_like",
         "created_at",
         "updated_at",
     )
 
 
-@admin.register(Link)
-class LinkAdmin(admin.ModelAdmin):
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
     list_display = (
         "user",
         "tweet",
