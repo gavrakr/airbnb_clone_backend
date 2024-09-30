@@ -7,7 +7,7 @@ class ChattingRoom(CommonModel):
 
     users = models.ManyToManyField(
         "users.User",
-        related_name="direct_messages",
+        related_name="direct_chatting_messages",
     )
 
     def __str__(self):
