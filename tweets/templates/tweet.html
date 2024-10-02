@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<table border="1">
+    <tr>
+        <th>User</th>
+        <th>Tweet</th>
+    </tr>
+    {% for tweet in tweets %}
+    <tr>
+        <td>{{tweet.user}}</td>
+        <td>{{tweet.payload}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+
+<!-- 
+<ul>
+    {% for data in datas %}
+    <li>
+        <h3>작성자: {{ data.user }}</h3>
+        내용: {{ data.payload }}
+    </li>
+    <hr>
+    {% endfor %}
+</ul> -->

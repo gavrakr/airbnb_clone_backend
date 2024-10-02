@@ -21,4 +21,5 @@ from rooms import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("rooms/", include("rooms.urls")),
+    path("tweets/", include("tweets.urls")),
 ]
