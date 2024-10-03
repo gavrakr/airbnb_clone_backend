@@ -23,4 +23,5 @@ urlpatterns = [
     path("rooms/", include("rooms.urls")),
     path("categories/", include("categories.urls")),
     path("tweets/", include("tweets.urls")),
+    path("users/", include("users.urls")),
 ]
