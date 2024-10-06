@@ -2,17 +2,13 @@ from rest_framework import serializers
 from .models import Category
 
 
-class CategorySerializer(serializers.Serializer):
+class CategorySerializer(serializers.ModelSerializer):
 
-    pk = serializers.IntegerField(read_only=True)
-    name = serializers.CharField(
-        required=True,
-        max_length=50,
-    )
-    kind = serializers.ChoiceField(
-        choices=Category.CategoryKindChoices.choices,
-    )
-    created_at = serializers.DateTimeField(read_only=True)
-
-    def create(self, validated_data):
-        return Category.objects.create(**validated_data)
+    class Meta:
+        model = Category
+        fields = "__all__"
+        # fields = (
+        #     "name",
+        #     "kind",
+        # )
+        # exclude = ("created_at",)
