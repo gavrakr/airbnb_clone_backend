@@ -20,8 +20,9 @@ from rooms import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("rooms/", include("rooms.urls")),
-    path("categories/", include("categories.urls")),
-    path("tweets/", include("tweets.urls")),
-    path("users/", include("users.urls")),
+    path("api/v1/users/", include("users.urls")),
+    path("api/v1/rooms/", include("rooms.urls")),
+    path("api/v1/categories/", include("categories.urls")),
+    path("api/v1/experiences/", include("experiences.urls")),
+    path("api/v1/tweets/", include("tweets.urls")),
 ]
