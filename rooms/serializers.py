@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Room, Amenity
 from users.serializers import TinyUserSerializer
 from categories.serializers import CategorySerializer
+from reviews.serializers import ReviewSerializer
 
 
 class AmenitySerializer(ModelSerializer):
@@ -15,6 +16,10 @@ class AmenitySerializer(ModelSerializer):
 
 
 class RoomListSerializer(ModelSerializer):
+
+    rating = serializers.SerializerMethodField()
+    is_owner = serializers.SerializerMethodField()
+
     class Meta:
         model = Room
         fields = (
@@ -23,7 +28,16 @@ class RoomListSerializer(ModelSerializer):
             "country",
             "city",
             "price",
+            "rating",
+            "is_owner",
         )
+
+    def get_rating(self, room):
+        return room.rating()
+
+    def get_is_owner(self, room):
+        request = self.context["request"]
+        return room.owner == request.user
 
 
 class RoomDetailSerializer(ModelSerializer):
@@ -31,11 +45,12 @@ class RoomDetailSerializer(ModelSerializer):
     owner = TinyUserSerializer(read_only=True)
     amenities = AmenitySerializer(read_only=True, many=True)
     category = CategorySerializer(read_only=True)
+    # reviews = ReviewSerializer(many=True, read_only=True)
 
-    potato = serializers.SerializerMethodField()
+    rating = serializers.SerializerMethodField()
 
-    def get_potato():
-        pass
+    def get_rating(self, room):
+        return room.rating()
 
     class Meta:
         model = Room
